@@ -1,0 +1,32 @@
+{
+    "name": "mogami",
+    "version": "0.1.0",
+    "main": "dist/index.js",
+    "author": "neodyland <contact@neody.land> (https://neody.land/)",
+    "license": "MIT",
+    "types": "dist/index.d.ts",
+    "scripts": {
+      "build": "ncc build src/index.js -o dist && terser dist/index.js -o dist/index.js -c -m",
+      "test": "ts-node tests/index.ts --no-type-check --swc"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/neodyland/packages.git"
+    },
+    "bugs": {
+      "url": "https://github.com/neodyland/packages/issues",
+      "email": "contact@neody.land"
+    },
+    "homepage": "https://github.com/neodyland/packages",
+    "devDependencies": {
+      "@types/node": "^18.11.18"
+    },
+    "dependencies": {
+    },
+      "keywords": [
+          "http",
+          "https",
+          "server"
+      ]
+  }
+  

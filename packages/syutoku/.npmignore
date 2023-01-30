@@ -1,4 +1,4 @@
 src/
-scripts/
 tsconfig.json
+tests/
 node_modules/
