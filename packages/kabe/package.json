@@ -1,15 +1,12 @@
 {
-	"name": "is-global-url",
-	"version": "0.1.2",
+	"name": "kabe",
+	"version": "0.1.0",
 	"main": "dist/index.js",
 	"author": "neodyland <contact@neody.land> (https://neody.land/)",
 	"license": "MIT",
 	"types": "dist/index.d.ts",
 	"scripts": {
-		"build": "tsc && terser dist/index.js -o dist/index.js -c -m"
-	},
-	"dependencies": {
-		"is-global-hostname": "^0.1.0"
+		"build": "ncc build src/index.ts -o dist && terser dist/index.js -o dist/index.js -c -m"
 	},
 	"repository": {
 		"type": "git",
@@ -20,8 +17,7 @@
 		"email": "contact@neody.land"
 	},
 	"homepage": "https://github.com/neodyland/packages",
-	"keywords": [
-		"is",
-		"is-url"
-	]
+	"devDependencies": {
+		"@types/node": "^18.11.18"
+	}
 }
