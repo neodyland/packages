@@ -1,0 +1,23 @@
+{
+  "name": "enka-api",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "author": "neodyland <contact@neody.land> (https://neody.land/)",
+  "license": "MIT",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/neodyland/packages.git"
+  },
+  "bugs": {
+    "url": "https://github.com/neodyland/packages/issues",
+    "email": "contact@neody.land"
+  },
+  "homepage": "https://github.com/neodyland/packages",
+  "dependencies": {
+    "axios": "^1.2.6"
+  }
+}
