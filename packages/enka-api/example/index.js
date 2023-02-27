@@ -2,7 +2,7 @@ const { EnkaAPILocale } = require("../dist/enkaApi.js");
 const { EnkaAPI } = require("../dist/index.js");
 
 async function main() {
-  const enkaApi = await EnkaAPI.init("700378769");
+  const enkaApi = await EnkaAPI.init("827106332");
   const locale = EnkaAPILocale("ja");
   console.log(locale("4144069251"));
   console.log(
@@ -13,6 +13,7 @@ async function main() {
     "costume:",
     enkaApi.getCostume({ iconName: "UI_AvatarIcon_RosariaCostumeWic" })
   );
+  console.log(enkaApi.get)
 }
 
 main();

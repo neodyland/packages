@@ -1,6 +1,19 @@
 import { BaseErrorMessage } from "./base";
 import { StringErrorMessage } from "./string";
 
+export type SafeParseResult<T, S extends DefType> =
+	| {
+			value: T;
+			readonly ok: true;
+	  }
+	| {
+			error: {
+				value: any;
+				message: GetErrorMessage<S>;
+			};
+			readonly ok: false;
+	  };
+
 export type DefType =
 	| "string"
 	| "number"
@@ -34,8 +47,10 @@ export function error<T extends DefType>(
 	message: GetErrorMessage<T>
 ) {
 	return {
-		value,
-		message,
+		error: {
+			value,
+			message,
+		},
 		ok: false as const,
 	};
 }

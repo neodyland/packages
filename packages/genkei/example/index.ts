@@ -1,3 +1,5 @@
-import { g } from "../src";
+import { g } from "..";
 
-g.string().safeParse("hello");
+const x = g.string().safeParse("hello");
+
+g.any().optional().safeParse("xxx");

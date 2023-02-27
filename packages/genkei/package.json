@@ -6,7 +6,8 @@
     "license": "MIT",
     "types": "dist/index.d.ts",
     "scripts": {
-      "build": "ncc build src/index.ts -o dist && terser dist/index.js -o dist/index.js"
+      "build": "ncc build src/index.ts -o dist && terser dist/index.js -o dist/index.js -c -m",
+      "watch": "ncc build src/index.ts -o dist --watch"
     },
     "repository": {
       "type": "git",

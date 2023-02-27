@@ -1,6 +1,6 @@
 import { isString } from "../types";
 import { BaseErrorMessage, DefBase } from "./base";
-import { error, ok } from "./return";
+import { error, ok, SafeParseResult } from "./return";
 
 export class DefString extends DefBase {
     private _min?: number
@@ -8,8 +8,8 @@ export class DefString extends DefBase {
     constructor() { 
         super();
     }
-    safeParse(value: any) {
-        const parent = super.safeParse(value);
+    protected safeParseString(value: any): SafeParseResult<string, "string"> {
+        const parent = this.safeParseAny(value);
         if(!parent.ok) {
             return parent;
         }
@@ -17,14 +17,14 @@ export class DefString extends DefBase {
             return error<"string">(value, StringErrorMessage.ValueNotString)
         }
         if(this._min !== undefined && value.length < this._min) {
-            return error(value, StringErrorMessage.ValueTooShort)
+            return error<"string">(value, StringErrorMessage.ValueTooShort)
         }
         if(this._max !== undefined && value.length > this._max) {
-            return error(value, StringErrorMessage.ValueTooLong)
+            return error<"string">(value, StringErrorMessage.ValueTooLong)
         }
         return ok(value);
     }
-    length(len: number){
+    len(len: number){
         this._min = len;
         this._max = len;
         return this;
@@ -36,6 +36,24 @@ export class DefString extends DefBase {
     max(len: number) {
         this._max = len;
         return this;
+    }
+}
+
+export class ParseString extends DefString {
+    constructor() { 
+        super();
+    }
+    safeParse(value: any) {
+        return this.safeParseString(value);
+    }
+    parse(value: any, error: boolean) {
+        const result = this.safeParse(value);
+        if(!result.ok) {
+            if(error) {
+                throw new Error(result.error.message);
+            }
+        }
+        return result;
     }
 }
 

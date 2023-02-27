@@ -1,12 +1,12 @@
 import { isUndefined } from "../types";
-import { error } from "./return";
+import { error, SafeParseResult } from "./return";
 
 export class DefBase {
     private _optional = false;
     constructor() { }
-    safeParse(value: any) {
+    protected safeParseAny(value: any): SafeParseResult<any,"any"> {
         if(!this._optional && isUndefined(value)) {
-            return error(value, BaseErrorMessage.ValueIsUndefined)
+            return error<"any">(value, BaseErrorMessage.ValueIsUndefined)
         }
         return {
             value: value,
